@@ -56,3 +56,13 @@ export async function getActorMovies(fetch, id) {
 
   return jsonData;
 }
+
+export async function search(query) {
+  let url = `${baseURL}/search/movie${key}&query=${query}`;
+  let rawData = await fetch(url);
+  let jsonData = await rawData.json();
+
+  console.log(jsonData);
+
+  return jsonData.results;
+}
