@@ -18,6 +18,7 @@
     // alert(searchQuery);
     searchResults = await movies.search(searchQuery);
     popularMovies = searchResults;
+    randomNotification();
   }
   function checkSearch() {
     // if (searchQuery == "") {
@@ -25,6 +26,19 @@
     // } else {
     //   searchView = true;
     // }
+  }
+
+  function randomNotification() {
+    const randomItem = Math.floor(Math.random());
+    const notifTitle = "test";
+    const notifBody = `Created by `;
+    const notifImg = `https://image.tmdb.org/t/p/w500//r5DbPQNmPJYYJC0nv6di13Y2dB3.jpg`;
+    const options = {
+      body: notifBody,
+      icon: notifImg,
+    };
+    new Notification(notifTitle, options);
+    setTimeout(randomNotification, 30000);
   }
 </script>
 
