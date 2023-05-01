@@ -105,7 +105,7 @@ export async function generateRecommendations() {
 }
 
 export async function discoverMovie(certification, genre) {
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US&include_adult=true&include_video=false&page=1&with_genres=${genre}&certification_country=US&certification=${certification}`;
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_genres=${genre}&certification_country=US&certification=${certification}`;
   console.log(url);
   const response = await fetch(url);
   const data = await response.json();
@@ -121,3 +121,5 @@ export async function getCertifications() {
   console.log("CERT: ", data.certifications.US);
   return data;
 }
+
+// generateRecommendations();
