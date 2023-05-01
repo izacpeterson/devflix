@@ -68,7 +68,7 @@ export async function getWatchProviders(movieID) {
   return data;
 }
 
-export async function generateRecommendations() {
+export async function favoriteGenres() {
   //get favorites
   const favorites = await getFavorites();
   //get movie details for each favorite
@@ -100,6 +100,9 @@ export async function generateRecommendations() {
     genreString += `${genre.id}|`;
   });
   console.log(genreString);
+
+  //sort genres by count
+  genres.sort((a, b) => b.count - a.count);
 
   return genres;
 }

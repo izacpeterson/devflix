@@ -44,34 +44,36 @@ export default function DiscoverPage() {
 
   return (
     <div>
-      <h1>DiscoverPage</h1>
-      <select
-        value={certification}
-        onChange={(e) => {
-          setCertification(e.target.value);
-        }}
-        className="bg-zinc-900 outline-none"
-      >
-        <option value="G">G</option>
-        <option value="PG">PG</option>
-        <option value="PG-13">PG-13</option>
-        <option value="R">R</option>
-        {/* <option value="NC-17">NC-17</option> */}
-      </select>
-      <select
-        value={genre}
-        onChange={(e) => {
-          setGenre(e.target.value);
-        }}
-        className="bg-zinc-900 outline-none"
-      >
-        <option value="">Select a genre</option>
-        {genreList.map((genre) => (
-          <option key={genre.id} value={genre.id}>
-            {genre.name}
-          </option>
-        ))}
-      </select>
+      <h1 className="text-center p-2 text-xl">DiscoverPage</h1>
+      <div className="flex justify-evenly">
+        <select
+          value={certification}
+          onChange={(e) => {
+            setCertification(e.target.value);
+          }}
+          className="bg-zinc-900 outline-none"
+        >
+          <option value="G">G</option>
+          <option value="PG">PG</option>
+          <option value="PG-13">PG-13</option>
+          <option value="R">R</option>
+          {/* <option value="NC-17">NC-17</option> */}
+        </select>
+        <select
+          value={genre}
+          onChange={(e) => {
+            setGenre(e.target.value);
+          }}
+          className="bg-zinc-900 outline-none"
+        >
+          <option value="">Select a genre</option>
+          {genreList.map((genre) => (
+            <option key={genre.id} value={genre.id}>
+              {genre.name}
+            </option>
+          ))}
+        </select>
+      </div>
       <ul className="flex flex-col items-center">
         {movies.map((movie) => (
           //   <MovieCard key={movie.id} movie={movie} />

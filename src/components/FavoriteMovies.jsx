@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getFavorites } from "../functions/firebase";
 import MovieCard from "./MovieCard";
+import DetailedMovieCard from "./DetailedMovieCard";
 
 export default function FavoriteMovies() {
   const [favorites, setFavorites] = useState([]);
@@ -19,7 +20,8 @@ export default function FavoriteMovies() {
       <ul className="flex flex-wrap justify-evenly">
         {favorites.map((movie) => (
           //   <li key={movie.id}>{movie.title}</li>
-          <MovieCard key={movie.id} movie={movie} />
+          //   <MovieCard key={movie.id} movie={movie} />
+          <DetailedMovieCard key={movie.id} movie={movie} />
         ))}
       </ul>
     </div>

@@ -50,6 +50,22 @@ export async function googleSignIn() {
   });
 }
 
+export async function signOut() {
+  return new Promise((resolve, reject) => {
+    auth
+      .signOut()
+      .then(() => {
+        // Sign-out successful.
+        window.location.reload();
+        resolve();
+      })
+      .catch((error) => {
+        // An error happened.
+        reject(error);
+      });
+  });
+}
+
 export async function getUser() {
   return new Promise((resolve, reject) => {
     onAuthStateChanged(auth, (user) => {
@@ -61,6 +77,22 @@ export async function getUser() {
         // ...
       } else {
         // User is signed out
+        // ...
+      }
+    });
+  });
+}
+
+export async function isUserSignedIn() {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        resolve(true);
+        // ...
+      } else {
+        // User is signed out
+        resolve(false);
         // ...
       }
     });
