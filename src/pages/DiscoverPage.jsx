@@ -26,8 +26,8 @@ const genreList = [
 ];
 
 export default function DiscoverPage() {
-  const [certification, setCertification] = useState("G");
-  const [genre, setGenre] = useState("");
+  const [certification, setCertification] = useState(localStorage.getItem("certification") || "G");
+  const [genre, setGenre] = useState(localStorage.getItem("genre") || "");
   const [movies, setMovies] = useState([]);
 
   async function handleChange() {
@@ -37,6 +37,8 @@ export default function DiscoverPage() {
   }
 
   useEffect(() => {
+    localStorage.setItem("certification", certification);
+    localStorage.setItem("genre", genre);
     handleChange();
   }, [certification, genre]); // include dependencies
 
