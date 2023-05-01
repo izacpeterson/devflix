@@ -7,8 +7,7 @@ export default function TopMovies() {
 
   useEffect(() => {
     async function getMovies() {
-      //   const movies = await getTopMovies();
-      const movies = await discoverMovie();
+      const movies = await getTopMovies();
       setTopMovies(movies.results);
     }
     getMovies();

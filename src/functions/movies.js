@@ -110,12 +110,6 @@ export async function discoverMovie(certification, genre) {
   const response = await fetch(url);
   const data = await response.json();
 
-  //remove movies that are already in favorites
-  const favorites = await getFavorites();
-  const filteredMovies = data.results.filter((movie) => {
-    return !favorites.find((favorite) => favorite.id === movie.id);
-  });
-
   return data;
 }
 
@@ -127,8 +121,3 @@ export async function getCertifications() {
   console.log("CERT: ", data.certifications.US);
   return data;
 }
-
-discoverMovie();
-getCertifications();
-
-// generateRecommendations();
