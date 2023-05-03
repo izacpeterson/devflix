@@ -33,7 +33,7 @@ export async function googleSignIn() {
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
         // ...
-        console.log(user);
+        user;
         resolve(user);
       })
       .catch((error) => {

@@ -8,7 +8,7 @@ export default function MoviePage() {
   useEffect(() => {
     async function getMovie() {
       const movieData = await getMovieDetails(id);
-      console.log(movieData);
+      movieData;
       setMovie(movieData);
     }
     getMovie();

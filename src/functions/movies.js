@@ -1,7 +1,9 @@
 import { getFavorites } from "./firebase";
+const baseUrl = "https://api.themoviedb.org/3";
+const apiKey = "26e99d56c670a23e5b53252a41402ce1";
 
 export async function getPopularMovies() {
-  const url = `https://api.themoviedb.org/3/movie/popular?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US&page=1`;
+  const url = `${baseUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -9,7 +11,7 @@ export async function getPopularMovies() {
 }
 
 export async function getMovieDetails(movieID) {
-  const url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US`;
+  const url = `${baseUrl}/movie/${movieID}?api_key=${apiKey}&language=en-US`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -25,7 +27,7 @@ export async function getMovieDetails(movieID) {
 }
 
 export async function getMovieCredits(movieID) {
-  const url = `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US`;
+  const url = `${baseUrl}/movie/${movieID}/credits?api_key=${apiKey}&language=en-US`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -33,7 +35,7 @@ export async function getMovieCredits(movieID) {
 }
 
 export async function getActorDetails(actorID) {
-  const url = `https://api.themoviedb.org/3/person/${actorID}?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US`;
+  const url = `${baseUrl}/person/${actorID}?api_key=${apiKey}&language=en-US`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -45,7 +47,7 @@ export async function getActorDetails(actorID) {
 }
 
 export async function getActorCredits(actorID) {
-  const url = `https://api.themoviedb.org/3/person/${actorID}/movie_credits?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US`;
+  const url = `${baseUrl}/person/${actorID}/movie_credits?api_key=${apiKey}&language=en-US`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -53,7 +55,7 @@ export async function getActorCredits(actorID) {
 }
 
 export async function getTopMovies() {
-  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US&page=1`;
+  const url = `${baseUrl}/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -61,7 +63,7 @@ export async function getTopMovies() {
 }
 
 export async function getWatchProviders(movieID) {
-  const url = `https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=26e99d56c670a23e5b53252a41402ce1`;
+  const url = `${baseUrl}/movie/${movieID}/watch/providers?api_key=${apiKey}`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -92,14 +94,14 @@ export async function favoriteGenres() {
     });
   });
 
-  console.log(genres);
+  genres;
 
   //combine genres into a comma seperated string
   let genreString = "";
   genres.forEach((genre) => {
     genreString += `${genre.id}|`;
   });
-  console.log(genreString);
+  genreString;
 
   //sort genres by count
   genres.sort((a, b) => b.count - a.count);
@@ -108,8 +110,8 @@ export async function favoriteGenres() {
 }
 
 export async function discoverMovie(certification, genre) {
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=26e99d56c670a23e5b53252a41402ce1&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_genres=${genre}&certification_country=US&certification=${certification}`;
-  console.log(url);
+  const url = `${baseUrl}/discover/movie?api_key=${apiKey}&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_genres=${genre}&certification_country=US&certification=${certification}`;
+  url;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -117,12 +119,26 @@ export async function discoverMovie(certification, genre) {
 }
 
 export async function getCertifications() {
-  const url = `https://api.themoviedb.org/3/certification/movie/list?api_key=26e99d56c670a23e5b53252a41402ce1`;
+  const url = `${baseUrl}/certification/movie/list?api_key=${apiKey}`;
   const response = await fetch(url);
   const data = await response.json();
 
-  console.log("CERT: ", data.certifications.US);
+  "CERT: ", data.certifications.US;
   return data;
 }
 
-// generateRecommendations();
+export async function getUpcommingMovies() {
+  const url = `${baseUrl}/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  return data;
+}
+
+export async function nowPlayingMovies() {
+  const url = `${baseUrl}/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  return data;
+}

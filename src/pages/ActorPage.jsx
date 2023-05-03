@@ -9,7 +9,7 @@ export default function ActorPage() {
   useEffect(() => {
     async function getActor() {
       const actorData = await getActorDetails(id);
-      console.log(actorData);
+      actorData;
       setActor(actorData);
     }
     getActor();

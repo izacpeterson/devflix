@@ -32,7 +32,7 @@ export default function DiscoverPage() {
 
   async function handleChange() {
     const movies = await discoverMovie(certification, genre);
-    console.log(movies);
+    movies;
     setMovies(movies.results);
   }
 

@@ -11,7 +11,7 @@ export default function NavDrawer({ links }) {
   return (
     <div className="text-lg">
       {/* Drawer toggle button */}
-      <button className=" text-white text-2xl" onClick={toggleDrawer}>
+      <button className=" text-white text-2xl lg:hidden" onClick={toggleDrawer}>
         <FontAwesomeIcon icon={faBars} />
       </button>
 
@@ -39,6 +39,15 @@ export default function NavDrawer({ links }) {
 
       {/* Overlay */}
       <div className={`${isOpen ? "block" : "hidden"} fixed top-0 left-0 w-screen h-screen bg-black opacity-90 z-30`} onClick={toggleDrawer} />
+
+      {/* Desktop navbar */}
+      <nav className="hidden lg:flex items-center">
+        {links.map((link) => (
+          <Link key={link.label} to={link.href} className="text-white hover:text-gray-400 px-4 py-2">
+            {link.label}
+          </Link>
+        ))}
+      </nav>
     </div>
   );
 }
